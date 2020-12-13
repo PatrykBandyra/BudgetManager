@@ -1,0 +1,73 @@
+*{
+    -fx-base: #424242
+}
+
+.splash-background {
+    -fx-background-color: black;
+}
+
+.background {
+
+}
+
+.button {
+    -fx-font-size: 16pt;
+    -fx-font-family: "Comic Sans MS";
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
+}
+
+.first-button {
+    -fx-shape: "M 200 200 Q 300 150 400 200 Q 500 250 400 300 Q 300 350 200 300 Q 100 250 200 200 ";
+    -fx-padding: 80px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+    -fx-background-color: #039BE5;
+    -fx-border-width: 10px;
+    -fx-border-color: #039BE5;
+}
+
+.first-button:hover {
+    -fx-background-color: white;
+    -fx-background-color: #f16c91;
+    -fx-text-fill: black;
+    -fx-border-color: #039BE5;
+}
+
+.first-button:pressed {
+    -fx-background-color: white;
+    -fx-background-color: #f16c91;
+    -fx-text-fill: black;
+    -fx-border-color: #039BE5;
+    -fx-rotate: 10;
+}
+
+/*---------------------------------------------------DrawerContent----------------------------------------------------*/
+
+.drawer-content{
+    -fx-background-color: #383838;
+    -fx-border-color: black;
+    -fx-border-width: 1px;
+}
+
+.jfx-button {
+    -fx-background-color: #454444;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 25px;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+    -fx-cursor: hand;
+}
+
+.jfx-button:pressed:hover {
+    -fx-scale-y: 0.9;
+    -fx-scale-x: 0.9;
+}
+
+.jfx-button:hover {
+    -fx-background-color: #383838;
+    -fx-scale-y: 1.1;
+    -fx-border-width: 0px;
+}
+

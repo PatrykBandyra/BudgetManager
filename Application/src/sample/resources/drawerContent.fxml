@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="600.0" prefWidth="200.0" styleClass="drawer-content" stylesheets="@firstStyle.css"
+      xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <ImageView fitHeight="200.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dollar_logo.png" />
+         </image>
+      </ImageView>
+      <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 1">
+         <font>
+            <Font name="Bell MT" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 2" />
+      <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 3" />
+      <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 4" />
+      <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Exit" />
+   </children>
+</VBox>
