@@ -13,7 +13,7 @@
    <children>
       <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
          <children>
-            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="500.0" style="-fx-background-color: white;">
+            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="500.0" styleClass="background" stylesheets="@firstStyle.css">
                <children>
                   <VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="drawer-content" stylesheets="@firstStyle.css" translateX="-200.0" HBox.hgrow="NEVER">
                      <children>

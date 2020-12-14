@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
+    public static Stage stage;
     public static Boolean isSplashLoaded = false;
 
     @Override
@@ -18,7 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/main.fxml"));
+        App.stage = stage;
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/main_copy.fxml"));
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/sample/resources/dollar_logo.png")));
         stage.setTitle("HomeBudgetApp");
         stage.setScene(new Scene(root));

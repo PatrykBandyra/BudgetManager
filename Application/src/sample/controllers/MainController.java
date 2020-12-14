@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import sample.App;
@@ -21,13 +20,14 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     @FXML
-    private VBox root;
+    private AnchorPane root;
     @FXML
     private JFXHamburger hamburger;
     @FXML
     private VBox drawer;
 
     public void initialize(URL url, ResourceBundle rb) {
+        App.stage.setResizable(true);   // enable resizing in main window
         if (!App.isSplashLoaded) {
             loadSplashScreen();
         }
@@ -47,7 +47,7 @@ public class MainController implements Initializable {
             if (drawer.getTranslateX() != 0) {
                 openNav.play();
             } else {
-                closeNav.setToX(-(drawer.getWidth()));
+                closeNav.setToX(-(drawer.getWidth())-20);
                 closeNav.play();
             }
         });
@@ -57,7 +57,7 @@ public class MainController implements Initializable {
         try {
             App.isSplashLoaded = true;
 
-            BorderPane pane = FXMLLoader.load(getClass().getResource(("/sample/resources/splashScreen.fxml")));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource(("/sample/resources/splashScreen.fxml")));
             root.getChildren().setAll(pane);
 
             FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), pane);
@@ -78,7 +78,11 @@ public class MainController implements Initializable {
 
             fadeOut.setOnFinished((e) -> {
                 try {
-                    VBox parentContent = FXMLLoader.load(getClass().getResource(("/sample/resources/main.fxml")));
+                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/sample/resources/main_copy.fxml")));
+                    AnchorPane.setTopAnchor(parentContent, 0.0);
+                    AnchorPane.setBottomAnchor(parentContent, 0.0);
+                    AnchorPane.setLeftAnchor(parentContent, 0.0);
+                    AnchorPane.setRightAnchor(parentContent, 0.0);
                     root.getChildren().setAll(parentContent);
                 } catch (IOException ex) {
                     ex.printStackTrace();
