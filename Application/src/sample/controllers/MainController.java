@@ -5,9 +5,12 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -98,6 +101,34 @@ public class MainController implements Initializable {
                 }
             });
 
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main scene to expense scene after pressing expense button
+     */
+    public void changeSceneToExpenseScene(ActionEvent event) {
+        try {
+            Parent expenseParent = FXMLLoader.load(getClass().getResource("/sample/resources/expenseScreen.fxml"));
+            Scene expenseScene = new Scene(expenseParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(expenseScene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main scene to income scene after pressing income button
+     */
+    public void changeSceneToIncomeScene(ActionEvent event) {
+        try {
+            Parent incomeParent = FXMLLoader.load(getClass().getResource("/sample/resources/incomeScreen.fxml"));
+            Scene incomeScene = new Scene(incomeParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(incomeScene);
+            App.stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

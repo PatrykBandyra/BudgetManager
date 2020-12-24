@@ -18,7 +18,7 @@
          <children>
             <VBox layoutX="5.0" layoutY="-9.0" AnchorPane.leftAnchor="14.0">
                <children>
-                  <JFXButton fx:id="incomeButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: green;" styleClass="income-button" stylesheets="@firstStyle.css" text="ADD INCOME">
+                  <JFXButton fx:id="incomeButton" alignment="CENTER" onAction="#changeSceneToIncomeScene" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: green;" styleClass="income-button" stylesheets="@firstStyle.css" text="ADD INCOME">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -28,7 +28,7 @@
                   </JFXButton>
                   <TableView blendMode="OVERLAY" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                     <columns>
-                      <TableColumn minWidth="-1.0" prefWidth="75.0" style="-fx-text-fill: white;" text="C1" />
+                      <TableColumn minWidth="-1.0" prefWidth="75.0" text="C1" />
                       <TableColumn minWidth="-1.0" prefWidth="75.0" text="C2" />
                     </columns>
                      <columnResizePolicy>
@@ -39,7 +39,7 @@
             </VBox>
             <VBox layoutX="457.0" layoutY="-9.0" AnchorPane.rightAnchor="14.0">
                <children>
-                  <JFXButton fx:id="expenseButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: red;" styleClass="expense-button" stylesheets="@firstStyle.css" text="ADD EXPENSE">
+                  <JFXButton fx:id="expenseButton" alignment="CENTER" onAction="#changeSceneToExpenseScene" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: red;" styleClass="expense-button" stylesheets="@firstStyle.css" text="ADD EXPENSE">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>

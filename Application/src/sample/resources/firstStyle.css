@@ -8,6 +8,32 @@
     -fx-text-fill: white;
 }
 
+.text-field {
+    -fx-background-color: #4b4b4b;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 24px;
+}
+
+.choice-box {
+    -fx-background-color: #4b4b4b;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+    -fx-font-family: "Bell MT";
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+}
+
+.choice-box-expense:pressed {
+    -fx-border-color: red;
+}
+
+.choice-box-income:pressed {
+    -fx-border-color: #4CAF50;
+}
+
+
 .expenseButton {
     -fx-background-color: green;
     -fx-border-color: red;
@@ -15,7 +41,6 @@
 
 .button {
     -fx-font-size: 16pt;
-    -fx-font-family: "Comic Sans MS";
     -fx-text-alignment: center;
     -fx-text-fill: white;
     -fx-effect: dropshadow(three-pass-box, black, 10, 0, 0, 0);
@@ -73,4 +98,5 @@
     -fx-scale-y: 1.1;
     -fx-border-width: 0px;
 }
+
 
