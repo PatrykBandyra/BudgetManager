@@ -1,5 +1,6 @@
 package sample.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
@@ -19,6 +20,10 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    @FXML
+    private JFXButton incomeButton;
+    @FXML
+    private JFXButton expenseButton;
     @FXML
     private AnchorPane root;
     @FXML
@@ -46,9 +51,13 @@ public class MainController implements Initializable {
             transition.play();
             if (drawer.getTranslateX() != 0) {
                 openNav.play();
+                incomeButton.setDisable(true);
+                expenseButton.setDisable(true);
             } else {
                 closeNav.setToX(-(drawer.getWidth())-20);
                 closeNav.play();
+                incomeButton.setDisable(false);
+                expenseButton.setDisable(false);
             }
         });
     }
@@ -78,7 +87,7 @@ public class MainController implements Initializable {
 
             fadeOut.setOnFinished((e) -> {
                 try {
-                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/sample/resources/main_copy.fxml")));
+                    AnchorPane parentContent = FXMLLoader.load(getClass().getResource(("/sample/resources/main.fxml")));
                     AnchorPane.setTopAnchor(parentContent, 0.0);
                     AnchorPane.setBottomAnchor(parentContent, 0.0);
                     AnchorPane.setLeftAnchor(parentContent, 0.0);
