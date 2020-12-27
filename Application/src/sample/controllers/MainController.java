@@ -5,17 +5,23 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import sample.App;
+import sample.DataRow;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +32,36 @@ public class MainController implements Initializable {
     @FXML
     private JFXButton incomeButton;
     @FXML
+    private TableView<DataRow> incomeTable;
+    @FXML
+    private JFXButton moreIncomeButton;
+    @FXML
+    private TableColumn<DataRow, Double> incomeValue;
+    @FXML
+    private TableColumn<DataRow, String> incomeName;
+    @FXML
+    private TableColumn<DataRow, String> incomeCategory;
+    @FXML
+    private TableColumn<DataRow, String> incomeDate;
+
+    // we need 2 observable lists for both main scene table views to update after each insert to be up to date without
+    // connecting to database again after performing insertion
+
+    @FXML
     private JFXButton expenseButton;
+    @FXML
+    private TableView<DataRow> expenseTable;
+    @FXML
+    private JFXButton moreExpenseButton;
+    @FXML
+    private TableColumn<DataRow, Double> expenseValue;
+    @FXML
+    private TableColumn<DataRow, String> expenseName;
+    @FXML
+    private TableColumn<DataRow, String> expenseCategory;
+    @FXML
+    private TableColumn<DataRow, String> expenseDate;
+
     @FXML
     private AnchorPane root;
     @FXML
@@ -35,7 +70,7 @@ public class MainController implements Initializable {
     private VBox drawer;
 
     public void initialize(URL url, ResourceBundle rb) {
-        App.stage.setResizable(true);   // enable resizing in main window
+        App.stage.setResizable(true);   // enable resizing in main scene
         if (!App.isSplashLoaded) {
             loadSplashScreen();
         }
@@ -63,6 +98,21 @@ public class MainController implements Initializable {
                 expenseButton.setDisable(false);
             }
         });
+
+        // initialize main scene table views
+        incomeValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+        incomeName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        incomeCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        incomeDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        expenseValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+        expenseName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        expenseCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        expenseDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        // add some test data [TEST]
+        incomeTable.setItems(getDataRowsIncomes());
+        expenseTable.setItems(getDataRowsExpenses());
     }
 
     private void loadSplashScreen() {
@@ -109,7 +159,8 @@ public class MainController implements Initializable {
     /**
      * Changes scene from main scene to expense scene after pressing expense button
      */
-    public void changeSceneToExpenseScene(ActionEvent event) {
+    @FXML
+    private void changeSceneToExpenseScene(ActionEvent event) {
         try {
             Parent expenseParent = FXMLLoader.load(getClass().getResource("/sample/resources/expenseScreen.fxml"));
             Scene expenseScene = new Scene(expenseParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
@@ -123,7 +174,8 @@ public class MainController implements Initializable {
     /**
      * Changes scene from main scene to income scene after pressing income button
      */
-    public void changeSceneToIncomeScene(ActionEvent event) {
+    @FXML
+    private void changeSceneToIncomeScene(ActionEvent event) {
         try {
             Parent incomeParent = FXMLLoader.load(getClass().getResource("/sample/resources/incomeScreen.fxml"));
             Scene incomeScene = new Scene(incomeParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
@@ -132,5 +184,43 @@ public class MainController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * Changes scene from main to expense details scene
+     */
+    @FXML
+    private void seeMoreExpense(ActionEvent event) {
+
+    }
+
+    /**
+     * Changes scene from main to income details scene
+     */
+    @FXML
+    private void seeMoreIncome(ActionEvent event) {
+
+    }
+
+    /**
+     * Produce some data to test something [TEST]
+     */
+    public ObservableList<DataRow> getDataRowsExpenses(){
+        ObservableList<DataRow> rows = FXCollections.observableArrayList();
+        rows.addAll(new DataRow(100, 12.65, 1, "1", 2020, 12, 25, "Jam", "Food"),
+                    new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                    new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum", "Food"));
+        return rows;
+    }
+
+    /**
+     * Produce some data to test something [TEST]
+     */
+    public ObservableList<DataRow> getDataRowsIncomes(){
+        ObservableList<DataRow> rows = FXCollections.observableArrayList();
+        rows.addAll(new DataRow(100, 20000, 1, "1", 2020, 12, 25, "Salary", "Cyclic"),
+                    new DataRow(200, 200, 34.56, "kg", 2020, 12, 24, "Bike sold", "Internet"),
+                    new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum sold", "Other"));
+        return rows;
     }
 }

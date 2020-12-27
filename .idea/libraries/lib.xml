@@ -4,6 +4,7 @@
       <root url="jar://$PROJECT_DIR$/../../../../sql_jdbc/ojdbc10.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../../../javafx_extentions/jfoenix-9.0.10.jar!/" />
       <root url="file://$PROJECT_DIR$/../../../../openjfx-15.0.1_windows-x64_bin-sdk/javafx-sdk-15.0.1/lib" />
+      <root url="jar://$PROJECT_DIR$/../../../../javafx_extentions/controlsfx-11.0.0-RC1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

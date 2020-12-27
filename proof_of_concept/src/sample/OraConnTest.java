@@ -43,9 +43,9 @@ public class OraConnTest {
     }
 
     public static void main(String[] args) {
-        OraConnTest test = new OraConnTest();
+        DatabaseManager test = new DatabaseManager();
         test.getConnection("jdbc:oracle:thin:@ora4.ii.pw.edu.pl:1521/pdb1.ii.pw.edu.pl", "pbandyra", "pbandyra");
-        final String sql = "SELECT * FROM HR.employees e WHERE e.salary = (SELECT MAX(salary) FROM HR.employees) ORDER BY employee_id ASC";
+        final String sql = "SELECT * FROM employees e WHERE e.salary = (SELECT MAX(salary) FROM employees) ORDER BY employee_id ASC";
         try {
             final Statement statement = test.connection.createStatement();
             ResultSet results = statement.executeQuery(sql);
