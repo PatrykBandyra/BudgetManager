@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@firstStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.ExpenseDetailsController">
+   <children>
+      <TableView layoutX="25.0" layoutY="78.0" prefHeight="500.0" prefWidth="750.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="78.0">
+        <columns>
+          <TableColumn prefWidth="77.19997978210449" text="C1" />
+          <TableColumn prefWidth="73.20001983642578" text="C2" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="687.0" layoutY="14.0" prefHeight="50.0" prefWidth="110.0" text="Return" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SplashScreenController">
+   <children>
+      <Label layoutX="145.0" layoutY="43.0" text="HomeBudgetApp" textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="72.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="343.0" layoutX="229.0" layoutY="170.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dollar_logo.png" />
+         </image>
+      </ImageView>
+      <Line endX="100.0" layoutX="10.0" layoutY="10.0" startX="99.99999237060547" startY="600.0" stroke="#4caf50" strokeWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Line endX="700.0000610351562" layoutX="110.0" layoutY="527.0" startX="-100.0" stroke="#4caf50" strokeWidth="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </children>
+</AnchorPane>
