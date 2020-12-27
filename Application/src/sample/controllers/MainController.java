@@ -91,11 +91,19 @@ public class MainController implements Initializable {
                 openNav.play();
                 incomeButton.setDisable(true);
                 expenseButton.setDisable(true);
+                moreExpenseButton.setDisable(true);
+                moreIncomeButton.setDisable(true);
+                incomeTable.setDisable(true);
+                expenseTable.setDisable(true);
             } else {
                 closeNav.setToX(-(drawer.getWidth())-20);
                 closeNav.play();
                 incomeButton.setDisable(false);
                 expenseButton.setDisable(false);
+                moreExpenseButton.setDisable(false);
+                moreIncomeButton.setDisable(false);
+                incomeTable.setDisable(false);
+                expenseTable.setDisable(false);
             }
         });
 
