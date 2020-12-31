@@ -15,6 +15,8 @@ import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 import sample.App;
+import sample.tasks.LoadExpenseReceiptAndPerformQuery;
+import sample.tasks.PushUpLogging;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,9 +58,11 @@ public class ExpenseScreenController implements Initializable {
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("txt files", "*.txt"));
         File selectedFile = fc.showOpenDialog(App.stage);
         if (selectedFile != null){
-            System.out.println("The file has been chosen!");
+            // load and validate receipt and try to perform a query (in background)
+            new Thread(new LoadExpenseReceiptAndPerformQuery(selectedFile.getPath())).start();
         } else {
-            System.out.println("Failed to open the file!");
+            // notify about an error
+            PushUpLogging.logFileNotFoundException();
         }
     }
 

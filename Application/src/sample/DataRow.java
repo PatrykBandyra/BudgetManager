@@ -14,8 +14,23 @@ public class DataRow {
 
     private String date;
 
+    // constructor for data row received from database (with id field)
     public DataRow(int id, double value, double amount, String unit, int year, int month, int day, String name, String category) {
         this.id = id;
+        this.value = value;
+        this.amount = amount;
+        this.unit = unit;
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        this.name = name;
+        this.category = category;
+        this.date = day+"/"+month+"/"+year;
+    }
+
+    // constructor for data row received from a receipt and ready to insert into database
+    public DataRow(double value, double amount, String unit, int year, int month, int day, String name, String category) {
+        this.id = 0;
         this.value = value;
         this.amount = amount;
         this.unit = unit;
@@ -102,5 +117,11 @@ public class DataRow {
 
     public String getCategory() {
         return category;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: "+id+", Value: "+value+", Amount: "+amount+", Unit: "+unit+", Category: "+category+", Name: "+name+
+                ", Date: "+date;
     }
 }

@@ -1,0 +1,2 @@
+10.00PLN    2       pc  "office"    "pens"      25.12.2020
+21.32PLN    12.5    kg  "food"      "potatoes"  26.12.2021

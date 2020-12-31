@@ -89,7 +89,7 @@
                   <JFXTextField focusColor="#4caf50" prefHeight="75.0" prefWidth="90.0" styleClass="text-field" />
                </children>
             </HBox>
-            <JFXButton text="Insert" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+            <JFXButton onAction="#onInsertButtonClicked" text="Insert" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets top="20.0" />
                </GridPane.margin>

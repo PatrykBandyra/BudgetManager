@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.FileChooser;
 import sample.App;
+import sample.tasks.LoadIncomeReceiptAndPerformQuery;
+import sample.tasks.PushUpLogging;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,9 +47,18 @@ public class IncomeScreenController implements Initializable {
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("txt files", "*.txt"));
         File selectedFile = fc.showOpenDialog(App.stage);
         if (selectedFile != null){
-            System.out.println("The file has been chosen!");
+            // load and validate income receipt and try to perform a query (in background)
+            new Thread(new LoadIncomeReceiptAndPerformQuery(selectedFile.getPath())).start();
         } else {
-            System.out.println("Failed to open the file!");
+            // notify about an error
+            PushUpLogging.logFileNotFoundException();
         }
+    }
+
+    /**
+     * Perform input check and database query after clicking insert button
+     */
+    @FXML
+    public void onInsertButtonClicked(ActionEvent event) {
     }
 }
