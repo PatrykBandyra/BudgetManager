@@ -62,11 +62,11 @@
                   <Font name="Bell MT" size="28.0" />
                </font>
             </Label>
-            <JFXTextField focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" />
-            <JFXTextField focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <JFXTextField focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <JFXTextField focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ChoiceBox prefWidth="150.0" styleClass="choice-box-income" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="nameField" focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" />
+            <JFXTextField fx:id="categoryField" focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXTextField fx:id="valueField" focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="amountField" focusColor="#4caf50" prefHeight="38.0" prefWidth="325.0" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="unitBox" prefWidth="150.0" styleClass="choice-box-income" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="5">
                <children>
                   <Label alignment="CENTER" prefHeight="82.0" prefWidth="36.0" styleClass="text" text="DD:">
@@ -74,22 +74,22 @@
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="#4caf50" prefHeight="75.0" prefWidth="46.0" styleClass="text-field" />
+                  <JFXTextField fx:id="dayField" focusColor="#4caf50" prefHeight="75.0" prefWidth="46.0" styleClass="text-field" />
                   <Label alignment="CENTER" prefHeight="75.0" prefWidth="44.0" styleClass="text" text="MM:">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="#4caf50" prefHeight="75.0" prefWidth="46.0" styleClass="text-field" />
+                  <JFXTextField fx:id="monthField" focusColor="#4caf50" prefHeight="75.0" prefWidth="46.0" styleClass="text-field" />
                   <Label alignment="CENTER" prefHeight="75.0" prefWidth="63.0" styleClass="text" text="YYYY:">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="#4caf50" prefHeight="75.0" prefWidth="90.0" styleClass="text-field" />
+                  <JFXTextField fx:id="yearField" focusColor="#4caf50" prefHeight="75.0" prefWidth="90.0" styleClass="text-field" />
                </children>
             </HBox>
-            <JFXButton onAction="#onInsertButtonClicked" text="Insert" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+            <JFXButton fx:id="insertButton" onAction="#onInsertButtonClicked" text="Insert" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets top="20.0" />
                </GridPane.margin>

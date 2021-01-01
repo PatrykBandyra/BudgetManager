@@ -19,8 +19,11 @@ public class LoadExpenseReceiptAndPerformQuery extends Task<Void> {
     @Override
     protected Void call() {
         try {
-            // first check for database connection + new exception
+
             ArrayList<DataRow> data = ReceiptLoader.loadReceipt(filepath);
+
+            // check for database connection + new exception
+
             // database query + ui update + notification about success
             // ...
 
@@ -31,7 +34,7 @@ public class LoadExpenseReceiptAndPerformQuery extends Task<Void> {
             PushUpLogging.logFileNotFoundException();
         } catch (IncorrectReceiptException | InvalidValueException | InvalidAmountException | InvalidUnitException |
                 AmountNotMatchingUnitException | InvalidDateException exception) {
-            PushUpLogging.logOtherExceptions(exception);
+            PushUpLogging.logOtherExceptions(exception, "Incorrect receipt!");
         }
         return null;
     }

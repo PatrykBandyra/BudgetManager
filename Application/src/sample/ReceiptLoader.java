@@ -134,15 +134,4 @@ public class ReceiptLoader {
             throw new InvalidDateException("Invalid date in receipt. Row number: ", exception);
         }
     }
-
-    public static void main(String[] args) throws InvalidDateException, InvalidValueException, InvalidAmountException, AmountNotMatchingUnitException, InvalidUnitException, IncorrectReceiptException {
-        try {
-            ArrayList<DataRow> data = loadReceipt("C:\\Users\\patry\\IdeaProjects\\pap_project_t31\\Application\\src\\sample\\resources\\receipts\\a.txt");
-            for (var i: data){
-                System.out.println(i.toString());
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }

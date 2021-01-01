@@ -25,6 +25,26 @@
     -fx-cursor: hand;
 }
 
+.choice-box > .label {-fx-text-fill: white;}
+
+.choice-box .context-menu {
+    -fx-background-color: #383838;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-text-fill: white;
+}
+/* Text color of not focused menu item */
+.choice-box .menu-item  > .label{-fx-text-fill: white;}
+
+/* Text color of focused item in the list */
+.choice-box .menu-item:focused > .label {-fx-text-fill: white;}
+
+/* Focused item background color in the list */
+.choice-box-expense .menu-item:focused {-fx-background-color: red;}
+
+/* Focused item background color in the list */
+.choice-box-income .menu-item:focused {-fx-background-color: #4CAF50;}
+
 .choice-box-expense:pressed {
     -fx-border-color: red;
 }

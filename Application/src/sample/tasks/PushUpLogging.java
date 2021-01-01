@@ -40,16 +40,42 @@ public class PushUpLogging {
      * Creates push-up notification about exception from working thread
      * @param t Exception
      */
-    public static void logOtherExceptions(final Throwable t) {
+    public static void logOtherExceptions(final Throwable t, String title) {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
                 // Update UI here
                 Notifications notificationBuilder = Notifications.create()
-                        .title("Incorrect receipt!")
+                        .title(title)
                         .text(t.getMessage())
                         .graphic(new ImageView(new Image("/sample/resources/error_mark.png")))
                         .hideAfter(Duration.seconds(10))
+                        .position(Pos.BOTTOM_RIGHT)
+                        .onAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event) {
+                            }
+                        });
+                notificationBuilder.darkStyle();
+                notificationBuilder.show();
+            }
+        });
+    }
+
+
+    /**
+     * Creates push-up notification about successful data insertion
+     */
+    public static void logSuccess() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                // Update UI here
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Data inserted successfully!")
+                        .text("The database has been updated")
+                        .graphic(new ImageView(new Image("/sample/resources/check_mark.png")))
+                        .hideAfter(Duration.seconds(3))
                         .position(Pos.BOTTOM_RIGHT)
                         .onAction(new EventHandler<ActionEvent>() {
                             @Override

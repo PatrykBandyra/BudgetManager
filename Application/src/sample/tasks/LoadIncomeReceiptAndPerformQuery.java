@@ -31,7 +31,7 @@ public class LoadIncomeReceiptAndPerformQuery extends Task<Void> {
             PushUpLogging.logFileNotFoundException();
         } catch (IncorrectReceiptException | InvalidValueException | InvalidAmountException | InvalidUnitException |
                 AmountNotMatchingUnitException | InvalidDateException exception) {
-            PushUpLogging.logOtherExceptions(exception);
+            PushUpLogging.logOtherExceptions(exception, "Incorrect receipt!");
         }
         return null;
     }

@@ -1,26 +1,29 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.FileChooser;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import sample.App;
+import sample.InputValidation;
+import sample.customExceptions.*;
+import sample.tasks.GetUserInputExpenseAndPerformQuery;
 import sample.tasks.LoadExpenseReceiptAndPerformQuery;
 import sample.tasks.PushUpLogging;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 
@@ -28,10 +31,33 @@ public class ExpenseScreenController implements Initializable {
 
     @FXML
     private JFXButton insertButton;
+    @FXML
+    private JFXTextField nameField;
+    @FXML
+    private JFXTextField categoryField;
+    @FXML
+    private JFXTextField valueField;
+    @FXML
+    private JFXTextField amountField;
+    @FXML
+    private ChoiceBox<String> unitBox;
+    @FXML
+    private JFXTextField dayField;
+    @FXML
+    private JFXTextField monthField;
+    @FXML
+    private JFXTextField yearField;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // initialize unit values
+        ArrayList<String> units = new ArrayList<>(
+                Arrays.asList("pc",
+                        "kg",
+                        "l"));
+        ObservableList<String> obsUnits = FXCollections.observableList(units);
+        unitBox.getItems().clear();
+        unitBox.setItems(obsUnits);
     }
 
     /**
@@ -57,7 +83,7 @@ public class ExpenseScreenController implements Initializable {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("txt files", "*.txt"));
         File selectedFile = fc.showOpenDialog(App.stage);
-        if (selectedFile != null){
+        if (selectedFile != null) {
             // load and validate receipt and try to perform a query (in background)
             new Thread(new LoadExpenseReceiptAndPerformQuery(selectedFile.getPath())).start();
         } else {
@@ -67,25 +93,11 @@ public class ExpenseScreenController implements Initializable {
     }
 
     /**
-     * Perform action after pressing insert button [TEST]
+     * Perform input check and database query after clicking insert button
      */
     @FXML
     private void onInsertButtonClicked(ActionEvent event) {
-        // here we need to check for data base connection and success of our operation
-        // if okay:
-        Notifications notificationBuilder = Notifications.create()
-                .title("Data Inserted Successfully")
-                .text("The database has been updated")
-                .graphic(new ImageView(new Image("/sample/resources/check_mark.png")))
-                .hideAfter(Duration.seconds(3))
-                .position(Pos.BOTTOM_RIGHT)
-                .onAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                        System.out.println("Clicked on notification.");
-                    }
-                });
-        notificationBuilder.darkStyle();
-        notificationBuilder.show();
+        new Thread(new GetUserInputExpenseAndPerformQuery(nameField, categoryField, valueField, amountField,
+                unitBox, dayField, monthField, yearField)).start();
     }
 }
