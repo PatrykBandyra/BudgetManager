@@ -17,39 +17,39 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ExpenseDetailsController implements Initializable {
+public class IncomeDetailsController implements Initializable {
 
     @FXML
-    private TableView<DataRow> expenseTable;
+    private TableView<DataRow> incomeTable;
     @FXML
-    private TableColumn<DataRow, Double> expenseValue;
+    private TableColumn<DataRow, Double> incomeValue;
     @FXML
-    private TableColumn<DataRow, Double> expenseAmount;
+    private TableColumn<DataRow, Double> incomeAmount;
     @FXML
-    private TableColumn<DataRow, String> expenseUnit;
+    private TableColumn<DataRow, String> incomeUnit;
     @FXML
-    private TableColumn<DataRow, String> expenseCategory;
+    private TableColumn<DataRow, String> incomeCategory;
     @FXML
-    private TableColumn<DataRow, String> expenseName;
+    private TableColumn<DataRow, String> incomeName;
     @FXML
-    private TableColumn<DataRow, String> expenseDate;
+    private TableColumn<DataRow, String> incomeDate;
 
     @FXML
     private JFXButton returnButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        expenseTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        incomeTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         // initialize table columns
-        expenseValue.setCellValueFactory(new PropertyValueFactory<>("value"));
-        expenseAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        expenseUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
-        expenseName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        expenseCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-        expenseDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        incomeValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+        incomeAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        incomeUnit.setCellValueFactory(new PropertyValueFactory<>("unit"));
+        incomeName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        incomeCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        incomeDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        expenseTable.setItems(App.expenses);
+        incomeTable.setItems(App.incomes);
     }
 
     /**

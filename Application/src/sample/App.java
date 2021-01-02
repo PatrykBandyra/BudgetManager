@@ -17,8 +17,8 @@ public class App extends Application {
 
 //    public static ObservableList<DataRow> expenses = FXCollections.observableArrayList();
 //    public static ObservableList<DataRow> incomes = FXCollections.observableArrayList();
-    public static ObservableList<DataRow> expenses = getDataRowsExpenses();
-    public static ObservableList<DataRow> incomes = getDataRowsIncomes();
+    public static ObservableList<DataRow> expenses = getDataRowsExpenses(); // TEST
+    public static ObservableList<DataRow> incomes = getDataRowsIncomes();   // TEST
     public static SimpleDoubleProperty balance = new SimpleDoubleProperty();
 
     /**
@@ -26,9 +26,32 @@ public class App extends Application {
      */
     public static ObservableList<DataRow> getDataRowsExpenses() {
         ObservableList<DataRow> rows = FXCollections.observableArrayList();
-        rows.addAll(new DataRow(100, 12.65, 1, "1", 2020, 12, 25, "Jam", "Food"),
+        rows.addAll(new DataRow(100, 12.65, 1, "pc", 2020, 12, 25, "Jam", "Food"),
                 new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
-                new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum", "Food"));
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
+                new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes and cabbage dish hohohoho", "Food"),
+                new DataRow(300, 1.99, 1, "pc", 2020, 12, 24, "Gum", "Food"));
         return rows;
     }
 
@@ -37,9 +60,36 @@ public class App extends Application {
      */
     public static ObservableList<DataRow> getDataRowsIncomes() {
         ObservableList<DataRow> rows = FXCollections.observableArrayList();
-        rows.addAll(new DataRow(100, 20000, 1, "1", 2020, 12, 25, "Salary", "Cyclic"),
-                new DataRow(200, 200, 34.56, "kg", 2020, 12, 24, "Bike sold", "Internet"),
-                new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum sold", "Other"));
+        rows.addAll(new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(200, 200, 1, "pc", 2020, 12, 24, "Bike sold", "Internet"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(100, 20000, 1, "pc", 2020, 12, 25, "Salary", "Cyclic"),
+                new DataRow(300, 1.99, 1, "pc", 2020, 12, 24, "Gum sold", "Food"));
         return rows;
     }
 

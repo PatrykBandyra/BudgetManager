@@ -55,9 +55,6 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<DataRow, String> incomeDate;
 
-    // we need 2 observable lists for both main scene table views to update after each insert to be up to date without
-    // connecting to database again after performing insertion
-
     @FXML
     private JFXButton expenseButton;
     @FXML
@@ -235,14 +232,21 @@ public class MainController implements Initializable {
      */
     @FXML
     private void seeMoreIncome(ActionEvent event) {
-
+        try {
+            Parent incomeDetailsParent = FXMLLoader.load(getClass().getResource("/sample/resources/incomeDetails.fxml"));
+            Scene incomeDetailsScene = new Scene(incomeDetailsParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(incomeDetailsScene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
      * Initializes expenses short observable list with latest expenses
      */
     private void initializeExpensesShort() {
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 8; ++i) {
             try {
                 expensesShort.add(App.expenses.get(i));
             } catch (IndexOutOfBoundsException exception) {
@@ -255,7 +259,7 @@ public class MainController implements Initializable {
      * Initializes incomes short observable list with latest incomes
      */
     private void initializeIncomesShort() {
-        for (int i = 0; i < 6; ++i) {
+        for (int i = 0; i < 8; ++i) {
             try{
                 incomesShort.add(App.incomes.get(i));
             } catch (IndexOutOfBoundsException exception) {
