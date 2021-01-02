@@ -5,21 +5,29 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import sample.App;
 import sample.DataRow;
 
@@ -28,6 +36,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
+    @FXML
+    private Label balanceLabel;
 
     @FXML
     private JFXButton incomeButton;
@@ -69,6 +80,9 @@ public class MainController implements Initializable {
     @FXML
     private VBox drawer;
 
+    private ObservableList<DataRow> expensesShort;
+    private ObservableList<DataRow> incomesShort;
+
     public void initialize(URL url, ResourceBundle rb) {
         App.stage.setResizable(true);   // enable resizing in main scene
         if (!App.isSplashLoaded) {
@@ -106,6 +120,8 @@ public class MainController implements Initializable {
                 expenseTable.setDisable(false);
             }
         });
+        // initialize balance value
+        balanceLabel.textProperty().bind(App.balance.asString());
 
         // initialize main scene table views
         incomeValue.setCellValueFactory(new PropertyValueFactory<>("value"));
@@ -118,9 +134,14 @@ public class MainController implements Initializable {
         expenseCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         expenseDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        // add some test data [TEST]
-        incomeTable.setItems(getDataRowsIncomes());
-        expenseTable.setItems(getDataRowsExpenses());
+        // get data for tables from observable lists
+        expensesShort = FXCollections.observableArrayList();
+        incomesShort = FXCollections.observableArrayList();
+        initializeExpensesShort();
+        initializeIncomesShort();
+
+        expenseTable.setItems(expensesShort);
+        incomeTable.setItems(incomesShort);
     }
 
     private void loadSplashScreen() {
@@ -199,7 +220,14 @@ public class MainController implements Initializable {
      */
     @FXML
     private void seeMoreExpense(ActionEvent event) {
-
+        try {
+            Parent expenseDetailsParent = FXMLLoader.load(getClass().getResource("/sample/resources/expenseDetails.fxml"));
+            Scene expenseDetailsScene = new Scene(expenseDetailsParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(expenseDetailsScene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -211,24 +239,28 @@ public class MainController implements Initializable {
     }
 
     /**
-     * Produce some data to test something [TEST]
+     * Initializes expenses short observable list with latest expenses
      */
-    public ObservableList<DataRow> getDataRowsExpenses(){
-        ObservableList<DataRow> rows = FXCollections.observableArrayList();
-        rows.addAll(new DataRow(100, 12.65, 1, "1", 2020, 12, 25, "Jam", "Food"),
-                    new DataRow(200, 234.99, 34.56, "kg", 2020, 12, 24, "Potatoes", "Food"),
-                    new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum", "Food"));
-        return rows;
+    private void initializeExpensesShort() {
+        for (int i = 0; i < 6; ++i) {
+            try {
+                expensesShort.add(App.expenses.get(i));
+            } catch (IndexOutOfBoundsException exception) {
+                break;
+            }
+        }
     }
 
     /**
-     * Produce some data to test something [TEST]
+     * Initializes incomes short observable list with latest incomes
      */
-    public ObservableList<DataRow> getDataRowsIncomes(){
-        ObservableList<DataRow> rows = FXCollections.observableArrayList();
-        rows.addAll(new DataRow(100, 20000, 1, "1", 2020, 12, 25, "Salary", "Cyclic"),
-                    new DataRow(200, 200, 34.56, "kg", 2020, 12, 24, "Bike sold", "Internet"),
-                    new DataRow(300, 1.99, 1, "1", 2020, 12, 24, "Gum sold", "Other"));
-        return rows;
+    private void initializeIncomesShort() {
+        for (int i = 0; i < 6; ++i) {
+            try{
+                incomesShort.add(App.incomes.get(i));
+            } catch (IndexOutOfBoundsException exception) {
+                break;
+            }
+        }
     }
 }

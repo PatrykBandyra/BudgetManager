@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../firstStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
    <children>
       <AnchorPane layoutY="234.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <VBox layoutX="14.0" layoutY="237.0" AnchorPane.leftAnchor="14.0">
                <children>
-                  <JFXButton fx:id="incomeButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: green;" styleClass="income-button" stylesheets="@../firstStyle.css" text="ADD INCOME">
+                  <JFXButton fx:id="incomeButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: green;" styleClass="income-button" stylesheets="@../styles.css" text="ADD INCOME">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -36,7 +36,7 @@
             </VBox>
             <VBox layoutX="466.0" layoutY="237.0" AnchorPane.rightAnchor="14.0">
                <children>
-                  <JFXButton fx:id="expenseButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: red;" styleClass="expense-button" stylesheets="@../firstStyle.css" text="ADD EXPENSE">
+                  <JFXButton fx:id="expenseButton" alignment="CENTER" prefHeight="130.0" prefWidth="320.0" style="-fx-background-color: red;" styleClass="expense-button" stylesheets="@../styles.css" text="ADD EXPENSE">
                      <font>
                         <Font name="Bell MT" size="18.0" />
                      </font>
@@ -65,7 +65,7 @@
             <Font size="40.0" />
          </font>
       </Label>
-      <VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="drawer-content" stylesheets="@../firstStyle.css" translateX="-220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="drawer-content" stylesheets="@../styles.css" translateX="-220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="200.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
                <image>
