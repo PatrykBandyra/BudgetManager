@@ -102,7 +102,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         App.stage = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/main.fxml"));
-        stage.getIcons().add(new Image(getClass().getResourceAsStream("/sample/resources/dollar_logo.png")));
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/sample/resources/img/dollar_logo.png")));
         stage.setTitle("HomeBudgetApp");
         stage.setScene(new Scene(root));
         App.stage.setMinHeight(600);

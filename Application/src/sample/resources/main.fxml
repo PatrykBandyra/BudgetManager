@@ -26,7 +26,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <TableView fx:id="incomeTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="incomeTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-income" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="incomeValue" minWidth="-1.0" prefWidth="75.0" text="Value" />
                       <TableColumn fx:id="incomeName" minWidth="-1.0" prefWidth="75.0" text="Name" />
@@ -57,7 +57,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <TableView fx:id="expenseTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="expenseTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-expense" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="expenseValue" prefWidth="75.0" text="Value" />
                       <TableColumn fx:id="expenseName" prefWidth="75.0" text="Name" />
@@ -99,18 +99,18 @@
          <children>
             <ImageView fitHeight="200.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@dollar_logo.png" />
+                  <Image url="@img/dollar_logo.png" />
                </image>
             </ImageView>
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Balance by month">
+            <JFXButton onAction="#showBalanceByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Balance by month">
                <font>
                   <Font name="Bell MT" size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by month" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by month" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by category" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by category" />
+            <JFXButton onAction="#showIncomesByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by month" />
+            <JFXButton onAction="#showExpensesByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by month" />
+            <JFXButton onAction="#showIncomesByCategory" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by category" />
+            <JFXButton onAction="#showExpensesByCategory" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by category" />
          </children>
       </VBox>
    </children>

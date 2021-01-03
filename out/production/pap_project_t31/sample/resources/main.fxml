@@ -26,7 +26,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <TableView fx:id="incomeTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="incomeTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-income" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="incomeValue" minWidth="-1.0" prefWidth="75.0" text="Value" />
                       <TableColumn fx:id="incomeName" minWidth="-1.0" prefWidth="75.0" text="Name" />
@@ -57,7 +57,7 @@
                         <Insets bottom="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <TableView fx:id="expenseTable" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <TableView fx:id="expenseTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view-expense" VBox.vgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="expenseValue" prefWidth="75.0" text="Value" />
                       <TableColumn fx:id="expenseName" prefWidth="75.0" text="Name" />
@@ -80,7 +80,6 @@
             </VBox>
          </children>
       </AnchorPane>
-      <JFXHamburger fx:id="hamburger" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="20.0" prefWidth="40.0" style="-fx-cursor: hand;" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <AnchorPane layoutY="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
             <Label alignment="CENTER" prefHeight="58.0" prefWidth="800.0" styleClass="text" text="BALANCE" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -95,22 +94,23 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXHamburger fx:id="hamburger" alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="20.0" prefWidth="40.0" style="-fx-cursor: hand;" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
       <VBox fx:id="drawer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="200.0" styleClass="drawer-content" stylesheets="@styles.css" translateX="-220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="200.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@dollar_logo.png" />
+                  <Image url="@img/dollar_logo.png" />
                </image>
             </ImageView>
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 1">
+            <JFXButton onAction="#showBalanceByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Balance by month">
                <font>
                   <Font name="Bell MT" size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 2" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 3" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 4" />
-            <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Help" />
+            <JFXButton onAction="#showIncomesByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by month" />
+            <JFXButton onAction="#showExpensesByMonth" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by month" />
+            <JFXButton onAction="#showIncomesByCategory" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Incomes by category" />
+            <JFXButton onAction="#showExpensesByCategory" prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button-drawer" text="Expenses by category" />
          </children>
       </VBox>
    </children>

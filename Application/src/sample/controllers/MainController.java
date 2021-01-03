@@ -5,29 +5,22 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 import sample.App;
 import sample.DataRow;
 
@@ -265,6 +258,81 @@ public class MainController implements Initializable {
             } catch (IndexOutOfBoundsException exception) {
                 break;
             }
+        }
+    }
+
+    /**
+     * Changes scene from main to balance by month
+     */
+    @FXML
+    private void showBalanceByMonth(ActionEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/resources/balanceByMonth.fxml"));
+            Scene scene = new Scene(parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main to incomes by month
+     */
+    @FXML
+    public void showIncomesByMonth(ActionEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/resources/incomesByMonth.fxml"));
+            Scene scene = new Scene(parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main to expenses by month
+     */
+    @FXML
+    private void showExpensesByMonth(ActionEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/resources/expensesByMonth.fxml"));
+            Scene scene = new Scene(parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main to incomes by category
+     */
+    @FXML
+    private void showIncomesByCategory(ActionEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/resources/incomesByCategory.fxml"));
+            Scene scene = new Scene(parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from main to expenses by category
+     */
+    @FXML
+    private void showExpensesByCategory(ActionEvent event) {
+        try {
+            Parent parent = FXMLLoader.load(getClass().getResource("/sample/resources/expensesByCategory.fxml"));
+            Scene scene = new Scene(parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

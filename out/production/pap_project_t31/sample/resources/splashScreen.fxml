@@ -16,7 +16,7 @@
       </Label>
       <ImageView fitHeight="343.0" layoutX="229.0" layoutY="170.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@dollar_logo.png" />
+            <Image url="@img/dollar_logo.png" />
          </image>
       </ImageView>
       <Line endX="100.0" layoutX="10.0" layoutY="10.0" startX="99.99999237060547" startY="600.0" stroke="#4caf50" strokeWidth="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />

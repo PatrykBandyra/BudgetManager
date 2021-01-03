@@ -10,6 +10,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import sample.App;
 import sample.DataRow;
 
@@ -37,6 +40,9 @@ public class ExpenseDetailsController implements Initializable {
     @FXML
     private JFXButton returnButton;
 
+    public static Stage promptStage;
+    public static DataRow selectedRow;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         expenseTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -61,6 +67,41 @@ public class ExpenseDetailsController implements Initializable {
             Parent mainParent = FXMLLoader.load(getClass().getResource("/sample/resources/main.fxml"));
             Scene mainScene = new Scene(mainParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(mainScene);
+            App.stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     * Shows new modal window with delete prompt
+     */
+    @FXML
+    private void showDeletePromptExpense(ActionEvent event) {
+        try {
+            promptStage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/deletePromptExpense.fxml"));
+            promptStage.setScene(new Scene(root));
+            promptStage.initOwner(App.stage);
+            promptStage.initModality(Modality.APPLICATION_MODAL);
+            promptStage.initStyle(StageStyle.UNDECORATED);
+            promptStage.setResizable(false);
+            promptStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene from expense details to update expense
+     */
+    @FXML
+    private void showUpdateExpenseScene(ActionEvent event) {
+        try {
+            selectedRow = expenseTable.getSelectionModel().getSelectedItem();
+            Parent Parent = FXMLLoader.load(getClass().getResource("/sample/resources/updateExpense.fxml"));
+            Scene scene = new Scene(Parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
+            App.stage.setScene(scene);
             App.stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();

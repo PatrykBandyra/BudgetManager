@@ -22,7 +22,7 @@ public class PushUpLogging {
                 Notifications notificationBuilder = Notifications.create()
                         .title("Failed to open the file!")
                         .text("Check to ensure that the filename and path are valid.")
-                        .graphic(new ImageView(new Image("/sample/resources/error_mark.png")))
+                        .graphic(new ImageView(new Image("/sample/resources/img/error_mark.png")))
                         .hideAfter(Duration.seconds(10))
                         .position(Pos.BOTTOM_RIGHT)
                         .onAction(new EventHandler<ActionEvent>() {
@@ -48,7 +48,7 @@ public class PushUpLogging {
                 Notifications notificationBuilder = Notifications.create()
                         .title(title)
                         .text(t.getMessage())
-                        .graphic(new ImageView(new Image("/sample/resources/error_mark.png")))
+                        .graphic(new ImageView(new Image("/sample/resources/img/error_mark.png")))
                         .hideAfter(Duration.seconds(10))
                         .position(Pos.BOTTOM_RIGHT)
                         .onAction(new EventHandler<ActionEvent>() {
@@ -74,7 +74,7 @@ public class PushUpLogging {
                 Notifications notificationBuilder = Notifications.create()
                         .title("Data inserted successfully!")
                         .text("The database has been updated")
-                        .graphic(new ImageView(new Image("/sample/resources/check_mark.png")))
+                        .graphic(new ImageView(new Image("/sample/resources/img/check_mark.png")))
                         .hideAfter(Duration.seconds(3))
                         .position(Pos.BOTTOM_RIGHT)
                         .onAction(new EventHandler<ActionEvent>() {

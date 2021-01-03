@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="200.0" fitWidth="235.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../dollar_logo.png" />
+            <Image url="@../img/dollar_logo.png" />
          </image>
       </ImageView>
       <JFXButton prefHeight="80.0" prefWidth="200.0" styleClass="jfx-button" text="Option 1">

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-border-color: #4CAF50; -fx-border-width: 3px;" styleClass="background" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.DeletePromptIncomeController">
+   <children>
+      <JFXButton layoutX="88.0" layoutY="100.0" onAction="#onYesClicked" text="yes" />
+      <JFXButton layoutX="241.0" layoutY="100.0" onAction="#onNoClicked" prefHeight="50.0" prefWidth="69.0" text="no" />
+      <Label layoutX="123.0" layoutY="36.0" text="Are you sure?" textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
