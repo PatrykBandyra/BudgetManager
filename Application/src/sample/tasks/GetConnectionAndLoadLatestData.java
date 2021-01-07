@@ -68,9 +68,8 @@ public class GetConnectionAndLoadLatestData extends Task<Void> {
             // load incomes
             final Statement sqlGetIncomes = App.databaseManager.connection.createStatement();
             ResultSet resultIncomesSet = sqlGetIncomes.executeQuery("SELECT r.REV_ID, r.VALUE, r.AMOUNT, r.UNIT, r.YEAR, r.MONTH, r.DAY, r.NAME, rc.R_CAT_NAME AS CATEGORY FROM REVENUE r JOIN REV_CAT rc on r.R_CAT_ID = rc.R_CAT_ID WHERE r.YEAR = "+year+" AND r.MONTH = "+month+"");
-
-
             if (resultIncomesSet.next()) {
+                System.out.println(resultIncomesSet.getString("name"));
                 App.incomes.clear();
                 do {
                     App.incomes.add(new DataRow(resultIncomesSet.getInt("rev_id"), resultIncomesSet.getDouble("value"),
@@ -79,6 +78,8 @@ public class GetConnectionAndLoadLatestData extends Task<Void> {
                             resultIncomesSet.getInt("day"), resultIncomesSet.getString("name"),
                             resultIncomesSet.getString("category")));
                 } while (resultIncomesSet.next());
+            } else {
+                PushUpLogging.logInfo("No income this month", "Database Info");
             }
 
             // load expenses
@@ -88,17 +89,21 @@ public class GetConnectionAndLoadLatestData extends Task<Void> {
             if (resultExpensesSet.next()) {
                 App.expenses.clear();
                 do {
+                    System.out.println();
                     App.expenses.add(new DataRow(resultIncomesSet.getInt("exp_id"), resultIncomesSet.getDouble("value"),
                             resultIncomesSet.getDouble("amount"), resultIncomesSet.getString("unit"),
                             resultIncomesSet.getInt("year"), resultIncomesSet.getInt("month"),
                             resultIncomesSet.getInt("day"), resultIncomesSet.getString("name"),
                             resultIncomesSet.getString("category")));
                 } while (resultIncomesSet.next());
+            } else {
+                PushUpLogging.logInfo("No expense this month", "Database Info");
             }
 
             // log about success
             PushUpLogging.logConnectionSuccess();
         } catch (SQLException exception) {
+            System.out.println(exception.getMessage());
             PushUpLogging.logConnectionError();
         }
         return null;
