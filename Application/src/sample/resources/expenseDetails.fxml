@@ -30,8 +30,8 @@
                <contextMenu>
                   <ContextMenu styleClass="context-menu-expense">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Update" onAction="#showUpdateExpenseScene"/>
-                        <MenuItem mnemonicParsing="false" text="Delete" onAction="#showDeletePromptExpense"/>
+                      <MenuItem mnemonicParsing="false" onAction="#showUpdateExpenseScene" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#showDeletePromptExpense" text="Delete" />
                     </items>
                   </ContextMenu>
                </contextMenu>
@@ -73,18 +73,18 @@
                         <Font name="Bell MT" size="16.0" />
                      </font>
                   </Label>
-                  <JFXTextField focusColor="RED" prefHeight="18.0" prefWidth="30.0" style="-fx-font-size: 12;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <JFXTextField fx:id="yearField" focusColor="RED" prefHeight="18.0" prefWidth="30.0" style="-fx-font-size: 12;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </JFXTextField>
-                  <JFXTextField focusColor="RED" style="-fx-font-size: 12;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="monthField" focusColor="RED" style="-fx-font-size: 12;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <Label text="MM:" textFill="RED" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Bell MT" size="16.0" />
                      </font>
                   </Label>
-                  <JFXButton prefHeight="24.0" prefWidth="270.0" style="-fx-font-size: 12;" text="Seacrh" GridPane.columnSpan="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                  <JFXButton onAction="#onSearchButtonPressed" prefHeight="24.0" prefWidth="270.0" style="-fx-font-size: 12;" text="Seacrh" GridPane.columnSpan="4" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets top="5.0" />
                      </GridPane.margin>

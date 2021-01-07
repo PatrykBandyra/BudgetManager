@@ -10,6 +10,9 @@ public class DatabaseManager {
 //         registerDriver();
     }
 
+    /**
+     * Function to test if JDBC driver is present on our machine
+     */
     private void registerDriver() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -19,14 +22,19 @@ public class DatabaseManager {
         }
     }
 
-    public Connection getConnection(String host, String user, String password) {
-        try {
-            connection = DriverManager.getConnection(host, user, password);
-        } catch (SQLException ex) {
-            System.out.println("Connection error. Check hostname, username and password.");
-        }
-        return connection;
+    public void getConnection(String host, String user, String password) throws SQLException {
+        connection = DriverManager.getConnection(host, user, password);
     }
+
+    public void closeConnection() {
+        try {
+            if (connection != null && connection.isValid(1))
+                connection.close();
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+    }
+
 
     public void testConnection() {
         try {

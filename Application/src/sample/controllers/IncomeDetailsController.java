@@ -1,6 +1,7 @@
 package sample.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import sample.App;
 import sample.DataRow;
+import sample.tasks.GetConnectionAndLoadDesiredIncomeData;
+import sample.tasks.GetConnectionAndLoadLatestData;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class IncomeDetailsController implements Initializable {
@@ -40,8 +44,16 @@ public class IncomeDetailsController implements Initializable {
     @FXML
     private JFXButton returnButton;
 
+    @FXML
+    private JFXTextField yearField;
+    @FXML
+    private JFXTextField monthField;
+
     public static Stage promptStage;
     public static DataRow selectedRow;
+
+    public static int monthValue = new Timestamp(System.currentTimeMillis()).getMonth() + 1;
+    public static int yearValue = new Timestamp(System.currentTimeMillis()).getYear() + 1900;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -64,6 +76,10 @@ public class IncomeDetailsController implements Initializable {
     @FXML
     private void onReturnButtonClicked(ActionEvent event) {
         try {
+            // load latest data
+            new Thread(new GetConnectionAndLoadLatestData(App.summaryChecked)).start();
+
+            // load main scene
             Parent mainParent = FXMLLoader.load(getClass().getResource("/sample/resources/main.fxml"));
             Scene mainScene = new Scene(mainParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(mainScene);
@@ -79,14 +95,16 @@ public class IncomeDetailsController implements Initializable {
     @FXML
     private void showDeletePromptIncome(ActionEvent event) {
         try {
-            promptStage = new Stage();
-            Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/deletePromptIncome.fxml"));
-            promptStage.setScene(new Scene(root));
-            promptStage.initOwner(App.stage);
-            promptStage.initModality(Modality.APPLICATION_MODAL);
-            promptStage.initStyle(StageStyle.UNDECORATED);
-            promptStage.setResizable(false);
-            promptStage.showAndWait();
+            if (selectedRow != null) {
+                promptStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("/sample/resources/deletePromptIncome.fxml"));
+                promptStage.setScene(new Scene(root));
+                promptStage.initOwner(App.stage);
+                promptStage.initModality(Modality.APPLICATION_MODAL);
+                promptStage.initStyle(StageStyle.UNDECORATED);
+                promptStage.setResizable(false);
+                promptStage.showAndWait();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -103,8 +121,17 @@ public class IncomeDetailsController implements Initializable {
             Scene scene = new Scene(Parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(scene);
             App.stage.show();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * Perform search for incomes from a specific month
+     */
+    @FXML
+    private void onSearchButtonPressed(ActionEvent event) {
+        new Thread(new GetConnectionAndLoadDesiredIncomeData(monthField.getText(), yearField.getText())).start();
     }
 }

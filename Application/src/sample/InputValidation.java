@@ -22,11 +22,11 @@ public class InputValidation {
         try {
             double value = Double.parseDouble(valueString);
             if (value <= 0) {
-                throw new InvalidValueException("Invalid value.");
+                throw new InvalidValueException("Invalid value");
             }
             return value;
         } catch (NumberFormatException | InvalidValueException exception) {
-            throw new InvalidValueException("Invalid value.", exception);
+            throw new InvalidValueException("Invalid value", exception);
         }
     }
 
@@ -34,11 +34,11 @@ public class InputValidation {
         try {
             double amount = Double.parseDouble(amountString);
             if (amount <= 0){
-                throw new InvalidAmountException("Invalid amount.");
+                throw new InvalidAmountException("Invalid amount");
             }
             return amount;
         } catch (NumberFormatException exception) {
-            throw new InvalidAmountException("Invalid amount.", exception);
+            throw new InvalidAmountException("Invalid amount", exception);
         }
     }
 
@@ -55,11 +55,11 @@ public class InputValidation {
             Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
             Timestamp ourTimeStamp = Timestamp.valueOf(LocalDateTime.of(year, month, day, 0, 0)); // DateTimeException
             if (ourTimeStamp.getTime() > currentTimeStamp.getTime()){
-                throw new InvalidDateException("Invalid date.");
+                throw new InvalidDateException("Invalid date");
             }
             return new int[] {day, month, year};
         } catch (NumberFormatException | DateTimeException exception){
-            throw new InvalidDateException("Invalid date.", exception);
+            throw new InvalidDateException("Invalid date", exception);
         }
     }
 }

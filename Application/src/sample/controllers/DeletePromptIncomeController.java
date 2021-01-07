@@ -3,6 +3,7 @@ package sample.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import sample.tasks.DeleteRowIncome;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,8 +22,7 @@ public class DeletePromptIncomeController implements Initializable {
 
     @FXML
     private void onYesClicked(ActionEvent event) {
-        // start delete task
-
+        new Thread(new DeleteRowIncome(IncomeDetailsController.selectedRow.getId())).start();
         IncomeDetailsController.promptStage.close();
     }
 }

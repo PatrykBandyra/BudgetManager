@@ -17,12 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import sample.App;
 import sample.DataRow;
+import sample.tasks.GetConnectionAndLoadLatestData;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,6 +71,8 @@ public class MainController implements Initializable {
     private JFXHamburger hamburger;
     @FXML
     private VBox drawer;
+    @FXML
+    private ImageView image;
 
     private ObservableList<DataRow> expensesShort;
     private ObservableList<DataRow> incomesShort;
@@ -132,6 +136,9 @@ public class MainController implements Initializable {
 
         expenseTable.setItems(expensesShort);
         incomeTable.setItems(incomesShort);
+
+//        // image hint text
+//        Tooltip.install(image, new Tooltip("Refresh"));
     }
 
     private void loadSplashScreen() {
@@ -334,5 +341,13 @@ public class MainController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     * Refreshes connection and loads latest data after clicking on image
+     */
+    @FXML
+    private void onMouseClickedOnImage(MouseEvent mouseEvent) {
+        new Thread(new GetConnectionAndLoadLatestData(App.summaryChecked)).start();
     }
 }

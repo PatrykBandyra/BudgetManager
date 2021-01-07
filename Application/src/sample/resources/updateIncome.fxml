@@ -103,7 +103,7 @@
                   <Font name="Bell MT" size="34.0" />
                </font>
             </Label>
-            <JFXButton onAction="#changeSceneToExpenseDetails" prefHeight="34.0" prefWidth="113.0" styleClass="jfx-button" text="Return" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <JFXButton onAction="#changeSceneToIncomeDetails" prefHeight="34.0" prefWidth="113.0" styleClass="jfx-button" text="Return" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font name="Bell MT" size="8.0" />
                </font>

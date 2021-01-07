@@ -12,6 +12,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import sample.App;
+import sample.tasks.GetConnectionAndLoadDesiredIncomeData;
+import sample.tasks.GetConnectionAndLoadLatestData;
+import sample.tasks.GetUserInputAndUpdateIncome;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +23,8 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UpdateIncomeController implements Initializable {
+
+    private int selectedRowId;
 
     @FXML
     private JFXTextField nameField;
@@ -52,6 +57,9 @@ public class UpdateIncomeController implements Initializable {
         unitBox.getItems().clear();
         unitBox.setItems(obsUnits);
 
+        // get id of selected row
+        selectedRowId = IncomeDetailsController.selectedRow.getId();
+
         // initialize text field with values from selected row
         nameField.setText(IncomeDetailsController.selectedRow.getName());
         categoryField.setText(IncomeDetailsController.selectedRow.getCategory());
@@ -63,13 +71,25 @@ public class UpdateIncomeController implements Initializable {
         yearField.setText(String.valueOf(IncomeDetailsController.selectedRow.getYear()));
     }
 
+    /**
+     * Performs input check and updates income data row
+     */
     @FXML
     private void onUpdateButtonClicked(ActionEvent event) {
+        new Thread(new GetUserInputAndUpdateIncome(selectedRowId, nameField, categoryField, valueField, amountField,
+                unitBox, dayField, monthField, yearField)).start();
     }
 
+    /**
+     * Changes scene from update income to income details
+     */
     @FXML
-    private void changeSceneToExpenseDetails(ActionEvent event) {
+    private void changeSceneToIncomeDetails(ActionEvent event) {
         try {
+            // load specific data
+            new Thread(new GetConnectionAndLoadDesiredIncomeData(String.valueOf(IncomeDetailsController.monthValue), String.valueOf(IncomeDetailsController.yearValue))).start();
+
+            // load income details scene
             Parent Parent = FXMLLoader.load(getClass().getResource("/sample/resources/incomeDetails.fxml"));
             Scene scene = new Scene(Parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(scene);

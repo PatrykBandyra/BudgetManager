@@ -1,9 +1,9 @@
-package sample.controllers;
+package src.sample.controllers;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import sample.DatabaseManager;
+import src.sample.OraConnTest;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,9 +13,9 @@ public class Controller {
     public Label resultLabel = null;
 
     public void onMouseClicked(MouseEvent mouseEvent) {
-        DatabaseManager test = new DatabaseManager();
+        OraConnTest test = new OraConnTest();
         test.getConnection("jdbc:oracle:thin:@ora4.ii.pw.edu.pl:1521/pdb1.ii.pw.edu.pl", "pbandyra", "pbandyra");
-        final String sql = "SELECT * FROM (SELECT * FROM HR.employees e WHERE e.salary = (SELECT MAX(salary) FROM HR.employees) ORDER BY employee_id ASC) WHERE ROWNUM = 1";
+        final String sql = "SELECT * FROM (SELECT * FROM employees e WHERE e.salary = (SELECT MAX(salary) FROM employees) ORDER BY employee_id ASC) WHERE ROWNUM = 1";
         try {
             final Statement statement = test.connection.createStatement();
             ResultSet results = statement.executeQuery(sql);

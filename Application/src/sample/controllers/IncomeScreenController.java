@@ -13,7 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.FileChooser;
 import sample.App;
-import sample.tasks.GetUserInputIncomeAndPerformQuery;
+import sample.tasks.GetConnectionAndLoadLatestData;
+import sample.tasks.GetUserInputIncomeAndInsert;
 import sample.tasks.LoadIncomeReceiptAndPerformQuery;
 import sample.tasks.PushUpLogging;
 
@@ -63,6 +64,10 @@ public class IncomeScreenController implements Initializable {
     @FXML
     private void changeSceneToMainScene(ActionEvent event) {
         try {
+            // load latest data
+            new Thread(new GetConnectionAndLoadLatestData(App.summaryChecked)).start();
+
+            // load main scene
             Parent mainParent = FXMLLoader.load(getClass().getResource("/sample/resources/main.fxml"));
             Scene mainScene = new Scene(mainParent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(mainScene);
@@ -94,7 +99,7 @@ public class IncomeScreenController implements Initializable {
      */
     @FXML
     public void onInsertButtonClicked(ActionEvent event) {
-        new Thread(new GetUserInputIncomeAndPerformQuery(nameField, categoryField, valueField, amountField,
+        new Thread(new GetUserInputIncomeAndInsert(nameField, categoryField, valueField, amountField,
                 unitBox, dayField, monthField, yearField)).start();
     }
 }

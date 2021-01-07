@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import sample.App;
+import sample.tasks.GetConnectionAndLoadDesiredExpenseData;
+import sample.tasks.GetUserInputAndUpdateExpense;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +22,8 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class UpdateExpenseController implements Initializable {
+
+    private int selectedRowId;
 
     @FXML
     private JFXTextField nameField;
@@ -52,6 +56,9 @@ public class UpdateExpenseController implements Initializable {
         unitBox.getItems().clear();
         unitBox.setItems(obsUnits);
 
+        // get id of selected row
+        selectedRowId = ExpenseDetailsController.selectedRow.getId();
+
         // initialize text field with values from selected row
         nameField.setText(ExpenseDetailsController.selectedRow.getName());
         categoryField.setText(ExpenseDetailsController.selectedRow.getCategory());
@@ -63,8 +70,13 @@ public class UpdateExpenseController implements Initializable {
         yearField.setText(String.valueOf(ExpenseDetailsController.selectedRow.getYear()));
     }
 
+    /**
+     * Performs input check and updates expense data row
+     */
     @FXML
     private void onUpdateButtonClicked(ActionEvent event) {
+        new Thread(new GetUserInputAndUpdateExpense(selectedRowId, nameField, categoryField, valueField, amountField,
+                unitBox, dayField, monthField, yearField)).start();
     }
 
     /**
@@ -73,6 +85,10 @@ public class UpdateExpenseController implements Initializable {
     @FXML
     private void changeSceneToExpenseDetails(ActionEvent event) {
         try {
+            // load specific data
+            new Thread(new GetConnectionAndLoadDesiredExpenseData(String.valueOf(ExpenseDetailsController.monthValue), String.valueOf(ExpenseDetailsController.yearValue))).start();
+
+            // load expense details scene
             Parent Parent = FXMLLoader.load(getClass().getResource("/sample/resources/expenseDetails.fxml"));
             Scene scene = new Scene(Parent, App.stage.getScene().getWidth(), App.stage.getScene().getHeight());
             App.stage.setScene(scene);

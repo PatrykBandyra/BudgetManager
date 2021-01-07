@@ -1,4 +1,4 @@
-package sample;
+package src.sample;
 
 import java.sql.*;
 
@@ -43,7 +43,7 @@ public class OraConnTest {
     }
 
     public static void main(String[] args) {
-        DatabaseManager test = new DatabaseManager();
+        OraConnTest test = new OraConnTest();
         test.getConnection("jdbc:oracle:thin:@ora4.ii.pw.edu.pl:1521/pdb1.ii.pw.edu.pl", "pbandyra", "pbandyra");
         final String sql = "SELECT * FROM employees e WHERE e.salary = (SELECT MAX(salary) FROM employees) ORDER BY employee_id ASC";
         try {
