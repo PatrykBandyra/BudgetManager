@@ -134,4 +134,41 @@ public class ReceiptLoader {
             throw new InvalidDateException("Invalid date in receipt. Row number: ", exception);
         }
     }
+    public static int unit_tests(int test_nr){
+        try{if(ReceiptLoader.getValueFromString("7534254")!=7534254) throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");
+        }catch(InvalidValueException exception){throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{if(ReceiptLoader.getValueFromString("1")!=1) throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");
+        }catch(InvalidValueException exception){throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{ReceiptLoader.getValueFromString("0"); throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");
+        }catch(InvalidValueException ignored){}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{ReceiptLoader.getValueFromString("-1"); throw new AssertionError("\n\t\tReceiptLoader.getValueFromString() failed\n");
+        }catch(InvalidValueException ignored){}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{if(ReceiptLoader.getAmountFromString("1")!=1) throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");
+        }catch(InvalidAmountException exception){throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{if(ReceiptLoader.getAmountFromString("3762526")!=3762526) throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");
+        }catch(InvalidAmountException exception){throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{ReceiptLoader.getAmountFromString("0"); throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");
+        }catch(InvalidAmountException ignored){}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        try{ReceiptLoader.getAmountFromString("-1"); throw new AssertionError("\n\t\tReceiptLoader.getAmountFromString() failed\n");
+        }catch(InvalidAmountException ignored){}
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        if(!ReceiptLoader.ifAmountMatchesUnit(53, "pc")) throw new AssertionError("\n\t\tReceiptLoader.ifAmountMatchesUnit() failed\n");
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        if(!ReceiptLoader.ifAmountMatchesUnit(53.0, "pc")) throw new AssertionError("\n\t\tReceiptLoader.ifAmountMatchesUnit() failed\n");
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        if(ReceiptLoader.ifAmountMatchesUnit(53.1, "pc")) throw new AssertionError("\n\t\tReceiptLoader.ifAmountMatchesUnit() failed\n");
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        if(!ReceiptLoader.ifAmountMatchesUnit(53.1, "pd")) throw new AssertionError("\n\t\tReceiptLoader.ifAmountMatchesUnit() failed\n");
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        if(!ReceiptLoader.ifAmountMatchesUnit(53.0, "pd")) throw new AssertionError("\n\t\tReceiptLoader.ifAmountMatchesUnit() failed\n");
+        System.out.println("test "+test_nr+" OK");test_nr++;
+        return test_nr;
+    }
 }
