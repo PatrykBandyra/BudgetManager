@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import sample.customExceptions.InvalidAmountException;
 import sample.tasks.GetConnectionAndLoadLatestData;
 
 public class App extends Application {
@@ -28,6 +29,7 @@ public class App extends Application {
 
     @Override
     public void init() throws Exception {
+        unit_tests();
         // while loading splash screen - get connection
         databaseManager = new DatabaseManager();
         new Thread(new GetConnectionAndLoadLatestData(summaryChecked)).start();
@@ -57,7 +59,7 @@ public class App extends Application {
 
 
     public static void unit_tests(){
-        if(App.expenses.isEmpty()==false){
+        if(!App.expenses.isEmpty()){
             System.out.println("WARNING: tests ran on non-empty expenses list, contents got cleared\n");
             App.expenses.clear();
         }

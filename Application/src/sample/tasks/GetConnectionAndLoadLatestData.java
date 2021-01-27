@@ -89,7 +89,6 @@ public class GetConnectionAndLoadLatestData extends Task<Void> {
             if (resultExpensesSet.next()) {
                 App.expenses.clear();
                 do {
-                    System.out.println();
                     App.expenses.add(new DataRow(resultIncomesSet.getInt("exp_id"), resultIncomesSet.getDouble("value"),
                             resultIncomesSet.getDouble("amount"), resultIncomesSet.getString("unit"),
                             resultIncomesSet.getInt("year"), resultIncomesSet.getInt("month"),
@@ -107,5 +106,17 @@ public class GetConnectionAndLoadLatestData extends Task<Void> {
             PushUpLogging.logConnectionError();
         }
         return null;
+    }
+
+    public static void main(String[] args) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@//ora4.ii.pw.edu.pl:1521/pdb1.ii.pw.edu.pl",
+                "BD1_Z07", "jibcuk");
+        final Statement statement = connection.createStatement();
+        final ResultSet set = statement.executeQuery("SELECT e.EXP_ID, e.VALUE, e.AMOUNT, e.UNIT, e.YEAR, e.MONTH, e.DAY, e.NAME, ec.E_CAT_NAME AS CATEGORY FROM EXPENSE e JOIN EXP_CAT ec on e.E_CAT_ID = ec.E_CAT_ID");
+        if (set.next()) {
+            do{
+                System.out.println(set.getString("name"));
+            } while (set.next());
+        }
     }
 }

@@ -1,0 +1,2 @@
+10.00PLN    2       kg  "food"    "bananas"      2.1.2020
+21.32PLN    12.12    pc  "food"      "water"  26.1.2021

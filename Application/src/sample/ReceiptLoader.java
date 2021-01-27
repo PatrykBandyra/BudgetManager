@@ -171,4 +171,9 @@ public class ReceiptLoader {
         System.out.println("test "+test_nr+" OK");test_nr++;
         return test_nr;
     }
+
+    public static void main(String[] args) {
+        unit_tests(1);
+    }
+
 }
